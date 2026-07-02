@@ -1,3 +1,4 @@
+//It is not thread safe.
 #include<iostream>
 
 using namespace std;

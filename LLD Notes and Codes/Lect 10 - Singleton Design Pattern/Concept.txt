@@ -1,0 +1,66 @@
+* The Singleton Design Pattern ensures that only one instance of a class is created throughout the 
+application's lifetime and provides a global point of access to that instance.
+
+- Create a private constructor
+- Create a static instance (Get Instance) that returns the same instance every time.
+
+Why do we need the Singleton Pattern?
+
+Suppose you're building an application that has a Logger class.
+
+Without Singleton:
+    Logger logger1 = new Logger();
+    Logger logger2 = new Logger();
+    Logger logger3 = new Logger();
+
+Now three logger objects exist.
+
+Problems:
+    More memory is used.
+    Multiple log files may be created.
+    Different objects may maintain different states.
+    Resource management becomes difficult.
+
+But in reality, The entire application needs only one Logger. So instead of creating multiple objects, 
+we create only one object and share it everywhere.
+
+This is where the Singleton Pattern is used.
+
+
+
+Lock Guard and Unique Lock.
+
+1. Lock Guard
+  std::lock_guard is a lightweight RAII wrapper that automatically locks a mutex when created and 
+unlocks it when destroyed. It is simple and efficient but cannot unlock or relock the mutex manually.
+
+Example:
+    std::mutex m;
+
+    void print() {
+        std::lock_guard<std::mutex> lock(m);
+        std::cout << "Critical Section";
+    }
+
+
+2. Unique Lock  
+    std::unique_lock is a more flexible RAII wrapper that allows manual lock/unlock operations, 
+deferred locking, timed locking, and ownership transfer. It is slightly heavier than lock_guard.
+
+Example:
+
+    std::mutex m;
+
+    void print() {
+        std::unique_lock<std::mutex> lock(m);
+        
+        std::cout << "Critical Section";
+        
+        lock.unlock();
+        
+        std::cout << "Non Critical Section";
+        
+        lock.lock();
+        
+        std::cout << "Critical Again";
+    }
