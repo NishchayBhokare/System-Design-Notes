@@ -1,0 +1,43 @@
+Strategy Pattern: 
+    It defines a family of algorithm, put them into seperate classes so that they can changes at runtime.
+    It follows Open/Closed Principle(OCP) because new strategies can be added without changing existing code.
+        Client
+           │
+        Chooses Strategy
+           │
+           ▼
+        PaymentStrategy (Interface)
+           ▲
+           │
+    -----------------------------------
+    │              │                  │
+    │              │                  │
+    UPI       Credit Card        PayPal
+    Strategy     Strategy       Strategy
+                    │
+                    ▼
+            PaymentService (Context)
+
+
+
+Why do we need it?
+    We use the Strategy Pattern when the behavior (algorithm) of an object can change at runtime. 
+It allows us to switch between different implementations without modifying the existing code.
+
+Example: Payment can be done using:
+
+UPI
+Credit Card
+PayPal
+
+Sabka goal same hai (payment), lekin implementation alag hai.
+
+Instead of writing:
+
+if(...)
+else if(...)
+else if(...)
+
+We create different strategy classes and choose one at runtime.
+
+👉 Strategy Pattern = Choose HOW to perform a task.

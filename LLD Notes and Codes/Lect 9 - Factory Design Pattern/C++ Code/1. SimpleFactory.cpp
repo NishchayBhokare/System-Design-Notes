@@ -1,3 +1,5 @@
+//A factory class that decides which concrete class to instantiate.
+
 #include <iostream>
 
 using namespace std;

@@ -1,3 +1,6 @@
+//Abstract Factory design pattern provides an interface for creating families of related objects without
+//Specifying their concrete classes.
+
 #include <iostream>
 
 using namespace std;

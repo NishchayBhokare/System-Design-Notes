@@ -1,0 +1,34 @@
+//The key idea is that one factory creates multiple related products.
+
+// One factory creates different products based on input.
+    // PaymentFactory
+    //  ↓
+    // UPI
+    //  ↓
+    // Card
+    //  ↓
+    // PayPal
+
+//Each product has its own factory.
+    // UPIFactory
+    //  ↓
+    // UPI
+    
+    // CardFactory
+    //  ↓
+    // Card
+
+
+Why do we need it?
+    We use the Factory Pattern to hide object creation from the client. Instead of creating objects using new, the factory decides which object to create and returns it to the client.
+
+Example: Instead of writing:
+
+Payment payment = new UpiPayment();
+
+We write:
+Payment payment = PaymentFactory.getPayment("UPI");
+
+The client doesn't know which class is being instantiated.
+
+👉 Factory Pattern = Decide WHICH object to create.

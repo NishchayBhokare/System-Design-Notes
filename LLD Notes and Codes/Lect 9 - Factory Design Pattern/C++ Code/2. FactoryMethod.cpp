@@ -1,3 +1,5 @@
+//It Defines an interface for creating obejects but allows subclasses to decides which class to intantiate.
+
 #include <iostream>
 
 using namespace std;

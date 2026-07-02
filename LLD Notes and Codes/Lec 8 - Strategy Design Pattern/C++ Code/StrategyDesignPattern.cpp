@@ -1,3 +1,9 @@
+
+// A virtual destructor is used to ensure that when an object of a derived class is deleted through 
+// a base class pointer, the destructor of the derived class is called first, followed by the destructor 
+// of the base class. This guarantees proper cleanup of resources allocated by both classes and prevents 
+// resource leaks or undefined behavior.
+
 #include <iostream>
 using namespace std;
 
