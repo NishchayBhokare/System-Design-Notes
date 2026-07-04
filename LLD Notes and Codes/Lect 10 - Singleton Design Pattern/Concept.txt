@@ -28,7 +28,7 @@ This is where the Singleton Pattern is used.
 
 
 
-Lock Guard and Unique Lock.
+                                   Lock Guard and Unique Lock.
 
 1. Lock Guard
   std::lock_guard is a lightweight RAII wrapper that automatically locks a mutex when created and 
