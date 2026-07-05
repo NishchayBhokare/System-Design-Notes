@@ -1,0 +1,73 @@
+- An object should only talk to the objects it directly owns or receives, and should not navigate through multiple objects to perform an operation.
+
+Why do we need it?
+Suppose you're designing an E-commerce Application. Below example is breaking Principle of least knowledge.
+
+You have:
+    Customer
+    ↓
+    Order
+    ↓
+    Payment
+    ↓
+    Bank
+
+Now suppose the customer wants to make a payment. Without following the Principle of Least Knowledge:
+
+customer.getOrder()
+        .getPayment()
+        .getBank()
+        .transferMoney();
+
+This is called method chaining.
+
+What's the Problem?
+The Customer knows:
+    Order
+    Payment
+    Bank
+
+If tomorrow the payment system changes,
+
+    Bank
+    ↓
+    PaymentGateway
+
+You'll have to modify the customer code. The customer is tightly coupled with the internal structure.
+
+
+
+** Rules That should follow in order to maitain Principle of Least Knowledge.
+Consider you have one object, now from any method in that object, principle tells that you can invoke 
+only methods that belongs to:
+    1. Then object iteself.
+    2. The object passed in as a parameter to the method.
+    3. Any object that methods creates. 
+    3. Any object with Has-A relationship.
+
+
+-- Below example follow principle of least knowledge.
+customer should simply ask the order to process the payment.
+
+Inside customer
+    void getOrder(){
+        order.makePayment();
+    }
+
+Now inside Order:
+    void makePayment() {
+        payment.processPayment();
+    }
+
+Inside Payment:
+    void processPayment() {
+        bank.transferMoney();
+    }
+
+Now,
+Customer only knows Order.
+Order only knows Payment.
+Payment only knows Bank.
+
+Each object talks only to its immediate friend.
+

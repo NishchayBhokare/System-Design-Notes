@@ -1,0 +1,47 @@
+- The Decorator Pattern is a structural design pattern that allows us to add new responsibilities or 
+behaviors to an object dynamically at runtime without modifying its existing code or creating many 
+subclasses. It wraps the original object inside another object (called a decorator) that adds extra 
+functionality while preserving the original interface.\
+
+eg. Adding abilities to character like Mario. 
+eg. Pizza: Adding topings, mushroom etc. eg. Text Editor: Same text can be bold, Italic etc.
+Why do we need the Decorator Pattern?
+
+Suppose you're building a coffee ordering application.
+
+Initially, you have only:
+
+Simple Coffee
+Coffee coffee = new SimpleCoffee();
+
+Now customers want:
+
+Coffee + Milk
+Coffee + Sugar
+Coffee + Milk + Sugar
+Coffee + Whipped Cream
+Coffee + Milk + Sugar + Cream
+Without Decorator
+
+You might create classes like:
+
+SimpleCoffee
+MilkCoffee
+SugarCoffee
+MilkSugarCoffee
+MilkCreamCoffee
+SugarCreamCoffee
+MilkSugarCreamCoffee
+
+As more combinations are added, the number of classes grows rapidly. This is called class explosion.
+
+Problems
+Too many subclasses.
+Difficult to maintain.
+Every new combination requires creating another class.
+Violates the Open/Closed Principle (OCP) because existing code may need changes.
+Solution: Decorator Pattern
+
+Instead of creating subclasses for every combination, we wrap the coffee object with decorators.
+
+Each decorator adds one feature.

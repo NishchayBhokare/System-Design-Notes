@@ -1,0 +1,12 @@
+The Observer Design Pattern is a behavioral design pattern that defines a one-to-many 
+dependency between objects. When the state of one object (the Observable/Subject) changes, 
+it automatically notifies all the dependent objects (Observers) so they can update themselves.
+
+eg. Youtube Channel and Subscriber relationship.
+Cricket Score(Observable) TV,Mobile,Website(Observer)
+
+1. Observable (Subject)
+The object whose state changes.
+
+2. Observer
+The objects that receive updates.

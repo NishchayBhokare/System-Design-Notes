@@ -1,0 +1,67 @@
+**Functional Requirements (FR)
+    - Functional requirements define what the system should do. They describe the features, 
+functionalities, and business logic that the system must provide to users.
+In simple words, Functional Requirements = What the system should do.
+
+
+**Non-Functional Requirements (NFR)
+    - Non-functional requirements define how well the system should perform. They specify quality 
+attributes such as performance, scalability, reliability, security, and availability rather than business features.
+
+In simple words, Non-Functional Requirements = How the system should behave or perform.
+
+
+HLD Example 
+Examples (Amazon)
+
+* Functional Requirements:
+    Suppose you're building Amazon. Functional requirements can be:
+
+    User should be able to register.
+    User should be able to login.
+    User should be able to search products.
+    User should be able to add products to the cart.
+    User should be able to place an order.
+    User should be able to make payments.
+    User should be able to cancel orders.
+    User should be able to track orders.
+
+    These are all features of the application.
+
+
+*Non Functional Requirements:
+
+    The system should:
+
+    Handle 10 million users simultaneously.
+    Return search results within 2 seconds.
+    Be available 99.99% of the time.
+    Encrypt user passwords.
+    Recover quickly if a server fails.
+    Scale automatically during sales like Prime Day.
+    Handle high traffic without crashing.
+
+    These are quality attributes, not features.
+
+
+
+LLD Example
+Example: Design a Parking Lot (LLD)
+* Functional Requirements (What should the system do?)
+
+    User can park a vehicle.
+    User can remove a vehicle.
+    System should generate a parking ticket.
+    System should calculate parking fees.
+    System should display available parking slots.
+    Support different vehicle types (Car, Bike, Truck).
+
+    These requirements help you identify the classes:
+
+* Non-Functional Requirements (How should the system behave?)
+    Easy to add new vehicle types.
+    Easy to add new payment methods.
+    Code should follow SOLID principles.
+    Low coupling and high cohesion.
+    Maintainable and extensible.
+    Thread-safe if multiple vehicles enter simultaneously.

@@ -1,0 +1,49 @@
+The Command Pattern is a behavioral design pattern that encapsulates a request or operation as an 
+object. It separates the object that requests an operation (Invoker) from the object that 
+performs the operation (Receiver), making the system more flexible and extensible.
+
+Why do we need the Command Pattern?
+Suppose you're building a Remote Control. Initially, you have:
+    Button
+    ↓
+    TV
+    Button directly calls
+
+    tv.turnOn();
+    Everything works.
+
+Now suppose your remote should control:
+
+    TV
+    Fan
+    AC
+    Music System
+    Lights
+
+Without Command Pattern:
+    if(button == "TV")
+        tv.turnOn();
+
+    else if(button == "Fan")
+        fan.turnOn();
+
+    else if(button == "AC")
+        ac.turnOn();
+
+    else if(button == "Light")
+        light.turnOn();
+
+Problems:
+Button knows every device. Every new device requires modifying Button. Violates Open/Closed Principle.
+Solution:
+
+Instead of storing devices, the button stores Command objects.
+
+    Button
+    ↓
+    TurnOnTVCommand
+    ↓
+    TV
+    
+
+Tomorrow if TurnOnFanCommand comes, Button doesn't change. Only command changes.

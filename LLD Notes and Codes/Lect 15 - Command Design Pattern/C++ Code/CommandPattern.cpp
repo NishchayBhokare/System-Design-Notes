@@ -1,13 +1,7 @@
 #include <iostream>
 using namespace std;
 
-// Command Interface
-class Command {
-public:
-    virtual void execute() = 0;
-    virtual void undo() = 0;
-    virtual ~Command() {}
-};
+
 
 // Receivers
 class Light {
@@ -28,6 +22,14 @@ public:
     void off() { 
         cout << "Fan is OFF" << endl; 
     }
+};
+
+// Command Interface ICommand
+class Command {
+public:
+    virtual void execute() = 0;
+    virtual void undo() = 0;
+    virtual ~Command() {}
 };
 
 // Concrete Command for Light
@@ -83,8 +85,8 @@ public:
 
     void setCommand(int idx, Command* cmd) {
         if (idx >= 0 && idx < numButtons) {
-            if (buttons[idx] != nullptr)
-                delete buttons[idx];
+            if (buttons[idx] != nullptr) //condition true means already command present at that index.
+                delete buttons[idx]; //so delete it.
             buttons[idx] = cmd;
             buttonPressed[idx] = false;
         }

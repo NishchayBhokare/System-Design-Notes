@@ -1,0 +1,2 @@
+- The Facade Design Pattern provides a single, unified interface to a set of complex system.
+It hides the complexity of the subsystem and exposes only What is neccessary.
