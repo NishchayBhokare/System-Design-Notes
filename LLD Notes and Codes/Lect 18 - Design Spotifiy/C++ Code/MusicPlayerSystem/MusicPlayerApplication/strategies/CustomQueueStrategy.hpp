@@ -2,6 +2,7 @@
 #include<iostream>
 #include "../models/Playlist.hpp"
 #include "PlayStrategy.hpp"
+#include<bits/stdc++.h>
 
 class CustomQueueStrategy : public PlayStrategy {
 private:
