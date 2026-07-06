@@ -156,7 +156,7 @@ public:
 // Client Code
 int main() {
     // Creating handlers for each note type
-    MoneyHandler* thousandHandler = new ThousandHandler(3);
+    MoneyHandler* thousandHandler = new ThousandHandler(5);
     MoneyHandler* fiveHundredHandler = new FiveHundredHandler(5);
     MoneyHandler* twoHundredHandler= new TwoHundredHandler(10);
     MoneyHandler* hundredHandler= new HundredHandler(20);

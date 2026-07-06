@@ -1,22 +1,22 @@
 //The key idea is that one factory creates multiple related products.
 
 // One factory creates different products based on input.
-    // PaymentFactory
-    //  ↓
-    // UPI
-    //  ↓
-    // Card
-    //  ↓
-    // PayPal
+    PaymentFactory
+    ↓
+    UPI
+    ↓
+    Card
+    ↓
+    PayPal
 
 //Each product has its own factory.
-    // UPIFactory
-    //  ↓
-    // UPI
+    UPIFactory
+      ↓
+    UPI
     
-    // CardFactory
-    //  ↓
-    // Card
+    CardFactory
+      ↓
+    Card
 
 
 Why do we need it?

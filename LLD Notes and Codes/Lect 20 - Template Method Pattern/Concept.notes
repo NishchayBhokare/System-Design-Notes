@@ -1,0 +1,2 @@
+- Template method pattern defines the skeleton (template) of an algorithm in a base class while 
+allowing subclasses to override specific steps without changing the overall algorithm.

@@ -1,0 +1,51 @@
+- The Chain of Responsibility Pattern is a behavioral design pattern that passes a request through a 
+chain of handler objects until one of them handles the request or the end of the chain is reached.
+- Instead of sending a request directly to one object, the request is passed through multiple handlers.
+Each handler decides whether to process it or pass it to the next handler.
+- Eg. Leave Request handler, Ticket handler etc.
+
+
+Why do we need the Chain of Responsibility Pattern?
+Suppose you're building a Customer Support System.
+
+There are three support levels:
+    Level 1 Support
+        ↓
+    Level 2 Support
+        ↓
+    Manager
+
+A customer raises a ticket.
+Without Chain of Responsibility:
+
+    if(ticket.level == 1)
+        level1.handle();
+
+    else if(ticket.level == 2)
+        level2.handle();
+
+    else if(ticket.level == 3)
+        manager.handle();
+
+Problems:
+- Lots of if-else statements.
+- Tight coupling.
+- Adding a new support level requires modifying existing code.
+- Violates the Open/Closed Principle.
+
+Solution:
+Create a chain.
+
+    Customer
+        ↓
+    Level1Handler
+        ↓
+    Level2Handler
+        ↓
+    ManagerHandler
+
+
+Each handler decides:
+    Can I handle it?
+    Yes → Handle it.
+    No → Pass it to the next handler.

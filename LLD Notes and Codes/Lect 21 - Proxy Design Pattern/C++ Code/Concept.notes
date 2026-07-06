@@ -1,0 +1,45 @@
+- defines the skeleton (template) of an algorithm in a base class while allowing subclasses to 
+override specific steps without changing the overall algorithm.
+- A Proxy acts as a middleman between the client and the real object. It can perform additional tasks 
+before or after forwarding the request to the real object.
+- Types of proxy: 1) Virtual Proxy. 2) Remote proxy. 3) Protection proxy.
+
+[Why do we need the Proxy Pattern?]
+Suppose you're building a Video Streaming Application.
+
+You have a class:
+class Video {
+public:
+    void play() {
+        cout << "Playing Movie";
+    }
+};
+
+The client directly calls
+    Video video;
+    video.play();
+
+Everything works.
+
+New Requirement: Now only Premium Users should watch movies. Without Proxy, everywhere you'll write
+
+if(user.isPremium())
+    video.play();
+else
+    cout<<"Access Denied";
+
+Problems:
+Authentication code is duplicated.
+Tight coupling.
+Difficult to maintain.
+
+
+Solution:
+Create a Proxy.
+    Client
+        ↓
+    VideoProxy
+        ↓
+    RealVideo
+
+The client talks only to the Proxy. The Proxy decides whether to allow access.
