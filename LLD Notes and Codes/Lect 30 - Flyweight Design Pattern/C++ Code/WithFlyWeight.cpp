@@ -64,7 +64,7 @@ public:
     }
     
     static int getFlyweightCount() {
-        return flyweights.size();
+        return flyweights.size();   
     }
     
     static size_t getTotalFlyweightMemory() {

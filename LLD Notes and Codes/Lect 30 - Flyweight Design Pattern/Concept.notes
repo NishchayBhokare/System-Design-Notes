@@ -1,0 +1,42 @@
+-> The Flyweight Pattern is a Structural Design Pattern that reduces memory usage by sharing common 
+objects instead of creating duplicate objects.
+-> The Flyweight Pattern is used when a large number of similar objects are created. Instead of 
+creating a new object every time, it shares the common data between multiple objects to save memory.
+
+-> Sometimes an application creates thousands or even millions of objects. Many of these objects 
+contain the same information. Creating separate objects for identical data wastes memory and reduces 
+performance.
+
+#Intrinsic vs Extrinsic State
+
+1. Intrinsic State (Shared)
+    - Intrinsic state is the information that is common for all objects and never changes.
+
+- Examples: 
+
+1. For Tree
+    Texture
+    Color
+    Height
+    Width
+
+2. For Character
+    Font
+    Size
+    Style
+
+This data is stored inside the Flyweight object.
+
+
+2. Extrinsic State (Unique)
+    - Extrinsic state is the information that changes for every object.
+    
+- Examples:
+For Tree
+    X Position
+    Y Position
+
+For Character
+    Character Position
+
+This data is provided by the client whenever needed.
