@@ -1,0 +1,56 @@
+- The Bridge Pattern is a structural design pattern that separates an abstraction from its 
+implementation so that both can vary independently.
+The Bridge Pattern splits a class into two independent hierarchies (abstraction and implementation) 
+and connects them using composition instead of inheritance.
+- To avoid class explosion, we used bridge pattern.
+
+
+[ !Why do we need the Bridge Pattern? ]
+
+- Suppose you're building a Remote Control System.
+
+You have two types of remotes:
+    Basic Remote
+    Advanced Remote
+
+And two types of TVs:
+    Sony TV
+    Samsung TV
+
+If you use inheritance only:
+             Remote
+        /                   \
+ BasicRemote          AdvancedRemote
+
+        ×                     ×
+
+     SonyTV             SamsungTV
+
+You end up creating:
+    BasicSonyRemote
+    BasicSamsungRemote
+    AdvancedSonyRemote
+    AdvancedSamsungRemote
+
+Today there are 4 classes.
+
+Tomorrow you add LG TV Now, 
+    BasicLGRemote
+    AdvancedLGRemote
+
+Tomorrow add VoiceRemote Now,
+    VoiceSonyRemote
+    VoiceSamsungRemote
+    VoiceLGRemote
+
+The number of classes keeps increasing. This is called the Class Explosion Problem.
+
+Solution:
+Instead of inheritance, connect them using composition.
+    Remote
+      |
+      | has-a
+      ▼
+     TV
+
+Now both can change independently.

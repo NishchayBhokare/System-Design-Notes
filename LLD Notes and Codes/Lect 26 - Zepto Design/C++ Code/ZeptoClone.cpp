@@ -89,6 +89,7 @@ class DbInventoryStore : public InventoryStore {
 private:
     map<int,int>* stock;             // SKU -> quantity
     map<int,Product*>* products;     // SKU -> Product*
+    // map<int,Product*>pk;
 public:
     DbInventoryStore() {
         stock = new map<int,int>();
@@ -104,6 +105,13 @@ public:
 
     void addProduct(Product* prod, int qty) override {
         int sku = prod->getSku();
+
+
+        // auto it = pk.find(sku);
+        // if(it != pk.end()){
+        //     //We can use this way to find the key is prsent or not.
+        // }
+        
         if (products->count(sku) == 0) {
             // Does not exist
             (*products)[sku] = prod;
@@ -162,7 +170,7 @@ public:
         Product* prod = ProductFactory::createProduct(sku);
         store->addProduct(prod, qty);
         cout << "[InventoryManager] Added SKU " << sku << " Qty " << qty << endl;
-    }
+    } 
 
     void removeStock(int sku, int qty) {
         store->removeProduct(sku, qty); 

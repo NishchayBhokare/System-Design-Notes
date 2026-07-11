@@ -1,0 +1,178 @@
+- The Builder Pattern is a creational design pattern that separates the construction of a complex object 
+from its representation, allowing the same construction process to create different representations.
+- Instead of passing many constructor parameters, we build the object step by step using a Builder.
+
+[Why do we need the Builder Pattern?]
+
+Suppose you're building an Amazon Order.
+
+An order has:
+Product Name
+Price
+Quantity
+Shipping Address
+Gift Wrap
+Coupon
+Delivery Type
+Insurance
+Special Instructions
+
+Without Builder, you'd create a constructor like this:
+Order(
+    string productName,
+    int price,
+    int quantity,
+    string address,
+    bool giftWrap,
+    bool insurance,
+    string coupon,
+    bool expressDelivery,
+    string instructions
+);
+
+Creating an object becomes ugly:
+Order order(
+    "Laptop",
+    60000,
+    1,
+    "Pune",
+    true,
+    false,
+    "SAVE1000",
+    true,
+    "Handle Carefully"
+);
+
+Problems
+    Hard to remember parameter order.
+    Easy to make mistakes.
+    Constructor becomes very long.
+    Not all fields are mandatory.
+
+This is often called the Telescoping Constructor Problem.
+
+
+Solution:
+Create the object step by step.
+
+OrderBuilder builder;
+
+builder.setProduct("Laptop")
+       .setPrice(60000)
+       .setGiftWrap(true)
+       .setCoupon("SAVE1000");
+
+Order order = builder.build();
+
+- Much cleaner and more readable.
+
+
+#Types of Builder Pattern:
+    1. Normal Builder
+    2. Builder with decorator.
+    3. Step builder.
+
+#1. Normal Builder.
+- In the Normal Builder Pattern, the client directly uses the Builder to create the object.There is no extra 
+class controlling the construction process. The client decides which fields to set and in what order 
+before calling build(). This is the simplest and most commonly used form of the Builder Pattern.
+
+Structure:
+    Client
+    │
+    ▼
+    Builder
+    │
+    ▼
+    Product
+
+Example:
+Order order = OrderBuilder()
+                .setProduct("Laptop")
+                .setPrice(60000)
+                .setGiftWrap(true)
+                .build();
+
+
+#2. Builder with decorator.
+- A Director is a separate class that knows how to construct an object using the Builder. Instead of the 
+client calling every builder method, the client simply asks the Director to build a specific type of object. 
+The Director contains the construction sequence, making it reusable and consistent across the application.
+Why do we need Director?
+
+- Sometimes the construction process is always the same.For example, Gaming PC always has
+
+    High-end CPU
+        ↓
+    High-end GPU
+        ↓
+    32GB RAM
+        ↓
+    RGB Cabinet
+
+- Every client should not write these steps repeatedly. The Director already knows this recipe.
+
+    Structure
+    Client
+        ↓
+    Director
+        ↓
+    Builder
+        ↓
+    Product
+
+Example:
+
+    CarBuilder builder;
+    Director director;
+    Car car = director.buildSportsCar(builder);
+
+Inside Director
+
+    builder.setEngine()
+        .setColor()
+        .setSunroof()
+        .build();
+
+The client only writes one line.
+
+
+#3. Step Builder.
+- The Step Builder Pattern is an advanced version of the Builder Pattern that forces the client to build the 
+object in a specific order. It ensures that all mandatory fields are provided before the object can be 
+created. This prevents invalid or incomplete objects from being built.
+
+- Why do we need it? Suppose Employee requires
+    Name
+    Age
+    Department
+
+These are mandatory.
+
+- With Normal Builder, this is possible
+Employee employee = EmployeeBuilder().build();
+
+- This creates an invalid object.
+
+- Step Builder prevents this.
+Structure
+    Name Step
+        ↓
+    Age Step
+        ↓
+    Department Step
+        ↓
+    Build Step
+
+- [Each step returns the next step.] The client cannot skip any mandatory field.
+
+Example
+Employee employee =
+EmployeeBuilder()
+.setName("Nishchay")
+.setAge(25)
+.setDepartment("Software")
+.build();
+
+- Trying to write -> EmployeeBuilder().build(); 
+It will not compile.

@@ -1,0 +1,59 @@
+- The Iterator Pattern is a Behavioral Design Pattern that provides a way to access the elements of a 
+collection, sequentially without exposing its internal implementation.
+- Iterator Pattern allows us to traverse (iterate through) a collection of objects one by one without 
+knowing how the collection stores those objects.
+
+[Why do we need Iterator Pattern?]
+
+- Suppose you have a class "Playlist" which stores songs.
+
+- Today it uses vector<Song>
+
+- Tomorrow you change it to list<Song> or set<Song>
+
+- Without Iterator, every client has to change its code because each container is traversed differently.
+
+Example:
+For vector
+    for(int i=0; i<v.size(); i++)
+
+For list
+    for(auto it=list.begin(); it!=list.end(); it++)
+
+For tree
+- Traversal is completely different.
+- The client becomes dependent on the data structure.
+- Iterator solves this problem.
+
+#Problem Without Iterator
+Imagine a Music Playlist.
+    Playlist
+        ↓
+    vector<Song>
+
+Client writes
+for(int i=0;i<playlist.size();i++)
+
+Later, developer changes
+
+    vector
+      ↓
+    Linked List
+
+Now every client breaks.
+
+
+#Solution:
+- Instead of exposing "vector" 
+- Playlist provides "Iterator"
+
+- Client only uses
+    hasNext()
+    next()
+
+- It doesn't care whether songs are stored in
+
+    Vector
+    List
+    Tree
+    Database
