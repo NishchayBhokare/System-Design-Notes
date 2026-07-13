@@ -1,0 +1,50 @@
+
+- The State Pattern is a Behavioral Design Pattern that allows an object to change its behavior 
+when its internal state changes, without using multiple if-else or switch statements.
+
+- The State Pattern is used when an object's behavior depends on its current state. Instead of 
+checking the state using if-else conditions, each state is represented by a separate class.
+
+- In many applications, an object behaves differently depending on its current state. A common approach is 
+to write multiple if-else or switch statements to decide what action to perform. As more states are added, 
+these conditions become long, difficult to maintain, and violate the Open/Closed Principle.
+
+- The State Pattern solves this problem by moving the behavior of each state into its own class. The main 
+object simply delegates the work to its current state object. When the state changes, the object's behavior 
+changes automatically because a different state object handles the request.
+
+
+[Why do we need State Pattern?]
+
+- Imagine an Order in an e-commerce application.
+It can have these states:
+    Placed
+      ↓
+    Packed
+      ↓
+    Shipped
+      ↓
+    Delivered
+
+Each state allows different actions.
+
+For example:
+Placed → Can cancel the order.
+Packed → Cannot modify items.
+Delivered → Can return the order.
+
+Without the State Pattern, you may write:
+if(orderState == "Placed")
+{
+    ...
+}
+else if(orderState == "Packed")
+{
+    ...
+}
+else if(orderState == "Shipped")
+{
+    ...
+}
+
+As more states are added, this code becomes difficult to maintain.
