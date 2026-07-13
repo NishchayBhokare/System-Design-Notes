@@ -41,13 +41,9 @@ class Board{
 
         this->row=row;
         this->col=col;
-        matrix.resize(this->row, vector<char>(this->col));
+        // matrix.resize(this->row, vector<char>(this->col));
+        matrix = vector<vector<char>>(row, vector<char>(col,'_'));
 
-        for(int i=0; i<row; i++){
-            for(int j=0; j<col; j++){
-                matrix[i][j]='A';
-            }
-        }
     }
 
     vector<vector<char> >& getMatrix(){
@@ -186,7 +182,7 @@ class BoardChecker{
         for(int i=0; i<matrix.size(); i++){
             for(int j=0; j<matrix[0].size(); j++){
 
-                if(matrix[i][j] == 'A'){
+                if(matrix[i][j] == '_'){
                     return false;
                 }
             }
@@ -195,19 +191,12 @@ class BoardChecker{
         return true;
     }
 
-    void checkMatch(int row, int col, int userIndex, char character,vector<vector<char>>&matrix, Observable *observable){
+    bool checkMatch(int row, int col, int userIndex, char character,vector<vector<char>>&matrix, Observable *observable){
         BoardMatcher *matcher1 = new HorizontalMatcher(row,col,matrix,character);
         BoardMatcher *matcher2 = new VerticalMatcher(row,col,matrix,character);
         BoardMatcher *matcher3 = new DiagonalMatcher(row,col,matrix,character);
 
         vector<User*>userList = observable->getList();
-
-        if(matcher1->matcher() || matcher2->matcher() || matcher3->matcher()){
-            observable->notifyOne(userIndex,"You have won!");
-
-            string message = "Winner is "+userList[userIndex]->getName()+". Congratulations dear.";
-            observable->notifyAll(message);
-        }
 
         for(int i=0; i<matrix.size(); i++){
             for(int j=0; j<matrix[0].size(); j++){
@@ -215,6 +204,17 @@ class BoardChecker{
             }cout<<endl;
         }
         cout<<endl;
+
+        if(matcher1->matcher() || matcher2->matcher() || matcher3->matcher()){
+            observable->notifyOne(userIndex,"You have won!");
+
+            string message = "Winner is "+userList[userIndex]->getName()+". Congratulations dear.";
+            observable->notifyAll(message);
+
+            return true;
+        }
+
+        return false;
     }
 };
 
@@ -240,7 +240,7 @@ class BoardManager{
    
     void addCross(int row, int col, int userIndex){
 
-        if(matrix[row][col] == 'A'){
+        if(matrix[row][col] == '_'){
             matrix[row][col] = 'X';
             
             this->notifyOne(userIndex,"Cross added successfully");
@@ -251,16 +251,17 @@ class BoardManager{
         }
 
         cout<<"Checking for match..."<<endl;
-        this->checkMatch(row,col,userIndex,'X');
+        bool isMatch = this->checkMatch(row,col,userIndex,'X');
 
-        if(this->isMatrixAllPosFilled()){
+        if(!isMatch && this->isMatrixAllPosFilled()){
+         
             this->notifyAll("Match is draw");
         }
     }
     
     void addCircle(int row, int col, int userIndex){
 
-        if(matrix[row][col] == 'A'){
+        if(matrix[row][col] == '_'){
             matrix[row][col] = 'O';
 
             this->notifyOne(userIndex,"Circle added successfully");
@@ -271,11 +272,13 @@ class BoardManager{
         }
 
         cout<<"Checking for match..."<<endl;
-        this->checkMatch(row,col,userIndex,'O');
+            bool isMatch = this->checkMatch(row,col,userIndex,'O');
+            
 
-        if(this->isMatrixAllPosFilled()){
-            this->notifyAll("Match is draw");
-        }
+            if(!isMatch && this->isMatrixAllPosFilled()){
+                
+                this->notifyAll("Match is draw");
+            }
     }
 
 
@@ -297,8 +300,8 @@ class BoardManager{
         return this->boardChecker->isMatrixAllPosFilled(this->matrix);
     }
 
-    void checkMatch(int row, int col, int userIndex, char character){
-        this->boardChecker->checkMatch(row,col,userIndex,character,this->matrix,observable);
+    bool checkMatch(int row, int col, int userIndex, char character){
+        return this->boardChecker->checkMatch(row,col,userIndex,character,this->matrix,observable);
     }
 
 };
@@ -325,10 +328,17 @@ int main(){
 
     manager->addCross(2,0,1); //row=2,col=0,userIndex=0 i.e Rohan.
 
-    manager->addCircle(1,1,0); 
+    manager->addCircle(2,1,1); 
 
-    manager->addCross(2,1,1); 
+    manager->addCross(1,1,0); 
 
-    manager->addCircle(2,2,0); 
+    // manager->addCircle(2,2,0); 
+
+    manager->addCircle(0,1,0); 
+
+    manager->addCross(0,2,1); 
+
+
+ 
 
 }
