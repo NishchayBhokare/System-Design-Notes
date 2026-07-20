@@ -1,0 +1,38 @@
+- The Visitor Pattern is a Behavioral Design Pattern that allows adding new operations to existing 
+classes without modifying those classes.
+- The Visitor Pattern is used when we want to perform different operations on a group of objects 
+without changing their classes. The operation is placed inside a separate Visitor class.
+
+- Normally, if we want to add a new functionality to a class, we modify the class and add a new method. 
+As the application grows, this causes classes to become larger and harder to maintain.
+
+- The Visitor Pattern solves this problem by moving the new functionality into a separate Visitor class. 
+The original classes remain unchanged, while different visitors can perform different operations on the 
+same objects. This follows the Open/Closed Principle, because new operations can be added without 
+modifying existing classes.
+
+
+[Why do we need Visitor Pattern?]
+
+Suppose we have
+    Circle
+    Rectangle
+    Triangle
+
+Today each class contains: draw()
+
+Tomorrow the client asks for calculateArea()
+
+Next month, calculatePerimeter()
+
+Then exportToPDF()
+
+Without Visitor, we have to modify every shape class every time.
+
+eg. In gaming applicaitons visitor pattern is used, as class methods goes increasing as time grows.
+
+#[How it is differnet from Strategy Pattern]
+- In Strategy pattern, single clas has fix number of operations or methods but every method could have
+different ways(Strategy) to do it.
+
+- Whereas, In Visitor Design pattern, number of operations or methods keeps adding or changes as time grows.

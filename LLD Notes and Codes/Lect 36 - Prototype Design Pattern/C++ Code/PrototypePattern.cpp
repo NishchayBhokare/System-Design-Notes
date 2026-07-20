@@ -66,7 +66,10 @@ int main() {
     NPC* alien = new NPC("Alien", 30, 5, 2);
 
     // 2) quickly clone + tweak as many variants as you like:
+    // Cloneable *c = alien->clone();//if we use base class pointer then no need to convert it.
+    
     NPC* alienCopied1 = dynamic_cast<NPC*>(alien->clone());
+    //Dynamic cast is used to assign parent reference to child reference.
     alienCopied1->describe();
 
     NPC* alienCopied2 = dynamic_cast<NPC*>(alien->clone());

@@ -130,7 +130,7 @@ public:
 
 int main() {
     Database db;
-    TransactionManager txManager;
+    TransactionManager txManager; //caretaker
    
     //success scenario
     txManager.beginTransaction(db);

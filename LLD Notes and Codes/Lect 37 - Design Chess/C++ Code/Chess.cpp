@@ -618,7 +618,8 @@ public:
     bool isCheckmate(Color color, Board* board) override {
         if (!isInCheck(color, board)) return false;
         
-        vector<Position> pieces = board->getAllPiecesOfColor(color);
+        vector<Position> pieces = board->getAllPiecesOfColor(color); //Including king which is in check, all other pieces we're getting
+        //to check possible moves
         for (const Position& pos : pieces) {
             Piece* piece = board->getPiece(pos);
             vector<Position> moves = piece->getPossibleMoves(pos, board);

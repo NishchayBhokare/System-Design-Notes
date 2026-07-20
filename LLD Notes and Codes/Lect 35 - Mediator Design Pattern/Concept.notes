@@ -1,0 +1,55 @@
+- The Mediator Pattern is a Behavioral Design Pattern that reduces direct communication between multiple 
+objects by introducing a central object (Mediator) through which all communication takes place.
+
+- In many applications, multiple objects need to interact with each other. If every object directly 
+communicates with every other object, the system becomes tightly coupled. Whenever one object changes, 
+many other objects may also need to be modified.
+
+- The Mediator Pattern solves this problem by introducing a Mediator class. Instead of communicating directly, 
+each object sends its request to the Mediator, and the Mediator decides which objects should receive the message. 
+This centralizes the communication logic and makes the individual objects simpler and easier to maintain.
+
+[Why do we need Mediator Pattern?]
+- Imagine a group chat with 5 users.
+Without a mediator:
+    A ↔ B
+    A ↔ C
+    A ↔ D
+    A ↔ E
+    B ↔ C
+    B ↔ D
+    B ↔ E
+    ...
+
+- Every user needs to know about every other user. As the number of users increases, the number of connections increases rapidly.
+
+#Problem Without Mediator
+
+Suppose you have
+    User A
+    User B
+    User C
+    User D
+
+If A wants to send a message, it directly calls
+
+    B.receiveMessage();
+    C.receiveMessage();
+    D.receiveMessage();
+
+Tomorrow you add another user. Now every existing user must be modified. This creates Tight Coupling.
+
+#Solution
+Introduce a ChatMediator.Now, communication becomes
+
+    User A
+       ↓
+    Chat Mediator
+       ↓
+    User B
+       ↓
+    User C
+       ↓
+    User D
+
+Users don't know about each other. They only know the Mediator.

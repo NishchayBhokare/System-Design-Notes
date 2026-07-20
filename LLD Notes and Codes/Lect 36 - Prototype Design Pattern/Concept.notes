@@ -1,0 +1,79 @@
+- The Prototype Pattern is a Creational Design Pattern that creates new objects by copying (cloning) 
+an existing object instead of creating a new one from scratch.
+- The Prototype Pattern is used when creating an object is expensive or complex. Instead of creating a new 
+object every time, we clone an existing object and modify it if needed.
+
+- Sometimes creating an object takes a lot of time because it requires loading data from a database, reading 
+configuration files, or performing complex initialization. Creating the same object repeatedly is inefficient.
+
+- The Prototype Pattern solves this problem by creating one fully initialized object, called the prototype, 
+and then creating new objects by cloning it. Cloning is usually much faster than constructing a new object 
+from scratch. This improves performance and avoids repeating expensive initialization logic.
+
+[Why do we need Prototype Pattern?]
+- Suppose you're developing a game.
+
+Creating an enemy involves:
+    Loading image
+    Loading weapon
+    Loading animations
+    Loading AI behavior
+
+Creating every enemy from scratch:
+    Enemy
+      ↓
+    Load Image
+      ↓
+    Load Weapon
+      ↓
+    Load AI
+      ↓
+    Initialize
+
+- This happens for every enemy. Which is Very slow.
+
+#Problem Without Prototype
+- Suppose creating one enemy takes 2 seconds. Need to create 100 enemies.
+- 100 × 2 seconds = 200 seconds
+
+- Most of the data is identical. Huge waste of time.
+
+#Solution
+- Create one enemy and Clone it.
+
+    Original Enemy
+      ↓
+    Clone
+      ↓
+    Enemy 1,
+    Enemy 2,
+    Enemy 3,
+    Enemy 4,
+
+- Only change unique properties like
+    Position
+    Health
+    Name
+
+Everything else is copied.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

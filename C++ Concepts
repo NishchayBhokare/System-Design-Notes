@@ -1,0 +1,6 @@
+- [In C++, dynamic_cast]:
+    - It is a runtime type conversion operator used to safely convert pointers or references along an inheritance hierarchy. It is primarily utilized for downcasting (converting a base class pointer/reference to a derived class pointer/reference).
+    - syntax. dynamic_cast<new_type>(expression)
+    
+    eg. NPC* alienCopied1 = dynamic_cast<NPC*>(alien->clone());
+    //Dynamic cast is used to assign parent reference to child reference.
