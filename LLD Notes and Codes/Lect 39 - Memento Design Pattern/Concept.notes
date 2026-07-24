@@ -1,0 +1,33 @@
+- The Memento Pattern is a Behavioral Design Pattern that allows an object to save and restore 
+its previous state without exposing its internal details.
+- The Memento Pattern is used when we want to save an object's state so that it can be restored 
+later, like an Undo operation.
+
+- Many applications allow users to undo or restore previous changes. For example, in a text 
+editor, users can undo typing, or in a game, players can load a previously saved checkpoint.
+- Without the Memento Pattern, the client would need direct access to an object's internal data 
+to save and restore it, which breaks encapsulation.
+- The Memento Pattern solves this by storing the object's state inside a separate Memento object.
+The object itself creates and restores these mementos, while another class called the Caretaker 
+simply stores them without knowing what's inside.
+
+
+#Components of Memento Pattern
+1. Originator: The main object whose state changes.
+Example - class TextEditor
+It can
+    Save its state.
+    Restore its state.
+
+2. Memento: Stores the snapshot of the object's state.
+Example
+    class Memento
+    {
+        string text;
+    };
+
+3. Caretaker: Stores all mementos.
+Example
+stack<Memento*> history;
+
+- The Caretaker does not know what's inside a memento; it only stores and returns it.

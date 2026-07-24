@@ -1,0 +1,37 @@
+- An Anti-Pattern is a commonly used design or coding solution that initially seems correct but 
+eventually leads to poor maintainability, tight coupling, poor scalability, or difficult testing.
+
+- An Anti-Pattern is a bad design practice that solves a problem temporarily but creates bigger 
+problems later.
+
+
+1. God Object/God Class:
+    - A God Class is a class that knows too much or does too much. Instead of following the Single 
+    Responsibility Principle, it handles many unrelated responsibilities.
+
+2. Spaghetti Code: 
+    - Code with no proper structure. Large nested loops. Many if-else blocks. Functions calling 
+    functions randomly.
+
+3. Hard Coding: Values are written directly into the code. Changing values requires recompiling.
+
+4. Gold Plating: Gold Plating is the anti-pattern of adding unnecessary features, abstractions, or 
+complexity that are not required by the current requirements. Building more than what the customer or problem actually requires.
+
+5. DRY Violation: The DRY anti-pattern occurs when the same logic is duplicated in multiple places 
+instead of being centralized.
+
+6. Constructor Overloading: Creating too many overloaded constructors, making object creation confusing 
+and difficult to maintain. Solution is, Use the Builder Pattern.   
+
+7. Overuse of Getters and Setters: Exposing every field through getters and setters breaks encapsulation
+and turns objects into simple data containers.
+
+8. Premature Optimization: Premature Optimization is an anti-pattern in which developers optimize code for
+performance before ensuring it is functionally correct, clean, maintainable, or before identifying actual 
+performance bottlenecks. 
+- This often leads to unnecessary complexity, reduced readability, and increased maintenance cost without 
+providing measurable performance benefits.
+
+9. Inheritance Overuse: Using inheritance everywhere even when composition would result in a simpler and 
+more flexible design.

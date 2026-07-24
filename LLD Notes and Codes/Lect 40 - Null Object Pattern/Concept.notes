@@ -1,0 +1,41 @@
+- The Null Object Pattern is a Behavioral Design Pattern that avoids null checks by returning a 
+special object with default or do-nothing behavior instead of returning nullptr (or null).
+- The Null Object Pattern is used when an object may not exist. Instead of returning nullptr, 
+we return a Null Object that safely performs default behavior.
+
+- In many applications, a method may fail to find an object and return nullptr. The client must 
+then check for nullptr before calling any methods. If the check is forgotten, the application 
+may crash due to a null pointer dereference.
+
+- The Null Object Pattern solves this problem by returning a special object that implements the 
+same interface as the real object but performs default or empty actions. The client can use the 
+returned object without worrying about null checks.
+
+
+#[Why do we need Null Object Pattern?]
+
+- Suppose you search for an employee.
+Employee* emp = getEmployee(id);
+- If the employee doesn't exist, emp == nullptr
+
+- Then you must write
+    if(emp != nullptr)
+    {
+        emp->display();
+    }
+
+every time.
+
+
+# Problem Without Null Object
+
+Employee* emp = getEmployee(id);
+emp->display();
+
+If emp == nullptr
+the program crashes.
+
+- Solution: Instead of returning nullptr, return NullEmployee. Now,
+    Employee* emp = getEmployee(id);
+    emp->display();
+works safely.

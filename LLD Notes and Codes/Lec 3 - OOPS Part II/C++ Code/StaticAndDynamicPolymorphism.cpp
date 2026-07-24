@@ -33,7 +33,7 @@ public:
 
     virtual void accelerate() = 0;  // Abstract method for Dynamic Polymorphism
 
-    virtual void accelerate(int speed) = 0;  //Abstract method for Static Polymorphism
+    virtual void accelerate(int speed) = 0;  //Abstract method for Static Polymorphism (Method overloading.)
 
     virtual void brake() = 0;       // Abstract method for Dynamic Polymorphism
     
